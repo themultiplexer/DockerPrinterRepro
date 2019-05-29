@@ -1,11 +1,11 @@
 # Docker Printer Reproduction
 
 ### Steps:
-1. Open this cloned git repo
+1. Clone and open this git repo
 1. Build the PrintTest-Solution as Release
 1. `docker build -t test-printer .`
 1. `docker run -it test-printer`
-1. `.\PrintTest.exe` <-- Here it fails
+1. Then inside the container: `.\PrintTest.exe` **<-- Here it fails**
 1. The Event Log `Get-WinEvent -FilterHashTable @{ LogName = "Microsoft-Windows-PrintService/Admin"; }` shows this:
 
 ```
