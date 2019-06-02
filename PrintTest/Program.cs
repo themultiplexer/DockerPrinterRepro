@@ -11,7 +11,16 @@ namespace PrintTest
        
         static void Main(string[] args)
         {
-            PrintDocument printDocument1 = new PrintDocument();
+
+            string directory = System.IO.Directory.GetCurrentDirectory();
+            PrintDocument printDocument1 = new PrintDocument() {
+                PrinterSettings = new PrinterSettings() {
+                    PrinterName = "Microsoft Print to PDF",
+                    PrintToFile = true,
+                    PrintFileName = Path.Combine(directory, "out.pdf"),
+                },
+                PrintController = new StandardPrintController()
+            };
             printDocument1.PrintPage += PrintDocument1_PrintPage;
             printDocument1.Print();
 
